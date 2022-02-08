@@ -2,6 +2,8 @@ import sha256 from 'crypto-js/sha256';
 import { generateSlug } from 'random-word-slugs';
 import { LS_PASSLENGTH, LS_PASSPHRASE } from './constants'
 
+console.log('YO')
+
 let passphrase = localStorage.getItem(LS_PASSPHRASE);
 let passLength = localStorage.getItem(LS_PASSLENGTH);
 

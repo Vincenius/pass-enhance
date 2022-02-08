@@ -13,13 +13,13 @@
       "38": "icons/icon-38.png"
     },
     "default_title": "Pass Enhance",
-    "default_popup": "popup/index.html"
+    "default_popup": "build/popup.html"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["encrypt.min.js"],
-      "css": ["index.css"]
+      "js": ["build/pass-enhance.min.js"],
+      "css": ["build/pass-enhance.css"]
     }
   ]
 }
