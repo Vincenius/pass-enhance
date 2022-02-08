@@ -1,0 +1,23 @@
+body {
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+label {
+  display: inline-flex;
+  align-items: center;
+}
+
+label svg {
+  margin-left: 6px;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="range"] {
+  margin-top: 0;
+}

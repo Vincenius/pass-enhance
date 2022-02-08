@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/water.css">
+  <link rel="stylesheet" href="./src/plugin.css">
+  <title>Pass Enhance</title>
+</head>
+<body>
+  <h2>Pass Enhance</h2>
+  <label>
+    Passphrase:
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m-1 15h2v-6h-2v6z" fill="currentColor"></path></svg>
+  </label>
+
+  <input id="passphrase" type="text"></input>
+
+  <br />
+
+  <label>
+    Password Length:
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m-1 15h2v-6h-2v6z" fill="currentColor"></path></svg>
+  </label>
+  <input id="passlength-range" type="range" min="8" max="32"></input>
+  <input id="passlength" type="number" min="8" max="32"></input>
+
+  <!-- TODO display hostname and allow (+ store) change -->
+  <!-- later TODO - try it! -->
+  <script src="./dist/plugin.min.js"></script>
+</body>
+</html>

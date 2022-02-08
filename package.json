@@ -1,0 +1,31 @@
+{
+  "name": "pass-enhance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "postcss app/src/*.css --use autoprefixer -d app/dist/",
+    "build:js:encrypt": "esbuild app/src/encrypt.js --bundle --outfile=app/dist/encrypt.min.js",
+    "build:js:plugin": "esbuild app/src/plugin.js --bundle --outfile=app/dist/plugin.min.js",
+    "watch:css": "onchange \"app/src/*.css\" -- run-p build:*",
+    "watch:js": "onchange \"app/src/*.js\" -- run-p build:js:*",
+    "dev": "run-p serve watch:*",
+    "serve": "browser-sync app -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "browser-sync": "^2.27.7",
+    "esbuild": "^0.14.18",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss": "^8.4.6",
+    "postcss-cli": "^9.1.0"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "random-word-slugs": "^0.1.6"
+  }
+}
