@@ -2,15 +2,15 @@
   "manifest_version": 2,
   "name": "Pass Enhance",
   "version": "1.0",
-  "description": "TODO.",
+  "description": "A browser plugin for chrome & firefox to improve password security.",
   "icons": {
-    "48": "icons/icon-48.png",
-    "96": "icons/icon-96.png"
+    "48": "build/icon-48.png",
+    "96": "build/icon-96.png"
   },
   "browser_action": {
     "default_icon": {
-      "19": "icons/icon-19.png",
-      "38": "icons/icon-38.png"
+      "19": "build/icon-19.png",
+      "38": "build/icon-38.png"
     },
     "default_title": "Pass Enhance",
     "default_popup": "build/popup.html"
@@ -21,5 +21,14 @@
       "js": ["build/pass-enhance.min.js"],
       "css": ["build/pass-enhance.css"]
     }
-  ]
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "info@wweb.dev",
+      "strict_min_version": "42.0"
+    }
+  }
 }

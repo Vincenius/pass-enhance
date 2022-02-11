@@ -2,6 +2,12 @@ body {
   width: 100%;
   max-width: 300px;
   box-sizing: border-box;
+  margin: 10px auto;
+}
+
+h2 {
+  margin-top: 0;
+  line-height: 1;
 }
 
 label {

@@ -2,22 +2,32 @@ import sha256 from 'crypto-js/sha256';
 import { generateSlug } from 'random-word-slugs';
 import { LS_PASSLENGTH, LS_PASSPHRASE } from './constants'
 
-console.log('YO')
+const passphraseStorage = browser.storage.sync.get('passphrase')
+const passLengthStorage = browser.storage.sync.get('passLength')
+let passphrase
+let passLength
 
-let passphrase = localStorage.getItem(LS_PASSPHRASE);
-let passLength = localStorage.getItem(LS_PASSLENGTH);
+// TODO move get as promise to some utils.js ??
+passphraseStorage.then((res) => {
+  if (res && res.passphrase) {
+    passphrase = res.passphrase
+  } else {
+      const newPassphrase = generateSlug();
+      browser.storage.sync.set({ passphrase: newPassphrase })
+      passphrase = newPassphrase
+  }
+});
 
-if (!passLength) {
-  passLength = 12;
-  localStorage.setItem(LS_PASSLENGTH, passLength)
-} else {
-  passLength = parseInt(passLength)
-}
+passLengthStorage.then((res) => {
+  if (res && res.passLength) {
+    passLength = parseInt(res.passLength)
+  } else {
+    const newPassLength = 12;
 
-if (!passphrase) {
-  passphrase = generateSlug();
-  localStorage.setItem(LS_PASSPHRASE, passphrase);
-}
+    browser.storage.sync.set({ passLength: newPassLength })
+    passLength = newPassLength
+  }
+});
 
 const SPECIAL_CHARS = ['!', '@', '#', '$', '%' ,'&' , '*']
 const CHARS = 'abcdefghijklmnopqrstuvwxyz'
@@ -42,7 +52,8 @@ const encryptInput = input => {
   let password = ''
   let i = 0
 
-  while (passwordArray.length !== passLength) {
+  while (passwordArray.length < passLength) {
+    console.log(passwordArray.length, passLength)
     const randomDigit = ciphertext.charCodeAt(i) % 10;
     i++
 
@@ -61,7 +72,8 @@ const encryptInput = input => {
     passwordArray.push(CHARS[charUpperIndex].toUpperCase())
   }
 
-  password = shuffle(passwordArray, ciphertext).join('')
+  password = shuffle(passwordArray.slice(0, passLength), ciphertext).join('')
+
   input.value = password
 }
 

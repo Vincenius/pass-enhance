@@ -5,27 +5,42 @@ const passphraseInput = document.querySelector('#passphrase')
 const passlengthInput = document.querySelector('#passlength')
 const passlengthRangeInput = document.querySelector('#passlength-range')
 
-let passphrase = localStorage.getItem(LS_PASSPHRASE);
-let passLength = localStorage.getItem(LS_PASSLENGTH);
+const passphraseStorage = browser.storage.sync.get('passphrase')
+const passLengthStorage = browser.storage.sync.get('passLength')
 
-if (!passphrase) {
-  passphrase = generateSlug();
-  passLength = 12;
-  localStorage.setItem(LS_PASSPHRASE, passphrase);
-  localStorage.setItem(LS_PASSLENGTH, passLength)
-}
+passphraseStorage.then((res) => {
+  if (res && res.passphrase) {
+    passphraseInput.value = res.passphrase
+  } else {
+      const passphrase = generateSlug();
 
-passphraseInput.value = passphrase
-passlengthInput.value = passLength
-passlengthRangeInput.value = passLength
+      browser.storage.sync.set({ passphrase })
+
+      passphraseInput.value = passphrase
+  }
+});
+
+passLengthStorage.then((res) => {
+  if (res && res.passLength) {
+    passlengthInput.value = res.passLength
+    passlengthRangeInput.value = res.passLength
+  } else {
+    const passLength = 12;
+
+    browser.storage.sync.set({ passLength })
+
+    passlengthInput.value = passLength
+    passlengthRangeInput.value = passLength
+  }
+});
 
 passphraseInput.addEventListener('input', e => {
-  localStorage.setItem(LS_PASSPHRASE, e.target.value)
+  browser.storage.sync.set({ passphrase: e.target.value })
 })
 
 passlengthRangeInput.addEventListener('input', e => {
   passlengthInput.value = e.target.value;
-  localStorage.setItem(LS_PASSLENGTH, e.target.value)
+  browser.storage.sync.set({ passLength: e.target.value })
 })
 
 passlengthInput.addEventListener('change', e => {
@@ -39,5 +54,5 @@ passlengthInput.addEventListener('change', e => {
   }
 
   passlengthRangeInput.value = e.target.value
-  localStorage.setItem(LS_PASSLENGTH, e.target.value)
+  browser.storage.sync.set({ passLength: e.target.value })
 })
