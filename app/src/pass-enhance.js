@@ -53,7 +53,6 @@ const encryptInput = input => {
   let i = 0
 
   while (passwordArray.length < passLength) {
-    console.log(passwordArray.length, passLength)
     const randomDigit = ciphertext.charCodeAt(i) % 10;
     i++
 

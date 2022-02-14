@@ -4,6 +4,7 @@ import { LS_PASSLENGTH, LS_PASSPHRASE } from './constants'
 const passphraseInput = document.querySelector('#passphrase')
 const passlengthInput = document.querySelector('#passlength')
 const passlengthRangeInput = document.querySelector('#passlength-range')
+const infoIcons = document.querySelectorAll('.info-icon')
 
 const passphraseStorage = browser.storage.sync.get('passphrase')
 const passLengthStorage = browser.storage.sync.get('passLength')
@@ -56,3 +57,12 @@ passlengthInput.addEventListener('change', e => {
   passlengthRangeInput.value = e.target.value
   browser.storage.sync.set({ passLength: e.target.value })
 })
+
+for (let icon of infoIcons) {
+  icon.addEventListener('mouseenter', () => {
+    icon.parentNode.querySelector('.info-popup').classList.add('visible')
+  })
+  icon.addEventListener('mouseleave', () => {
+    icon.parentNode.querySelector('.info-popup').classList.remove('visible')
+  })
+}

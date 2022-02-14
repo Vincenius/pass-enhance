@@ -11,6 +11,7 @@ h2 {
 }
 
 label {
+  position: relative;
   display: inline-flex;
   align-items: center;
 }
@@ -26,4 +27,18 @@ input {
 
 input[type="range"] {
   margin-top: 0;
+}
+
+.info-popup {
+  position: absolute;
+  right: -5px;
+  top: 0;
+  background: rgba(0,0,0,0.15);
+  padding: 10px;
+  transform: translateX(100%) translateY(-25%);
+  display: none;
+}
+
+.info-popup.visible {
+  display: block;
 }
