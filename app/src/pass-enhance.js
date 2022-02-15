@@ -1,6 +1,5 @@
 import sha256 from 'crypto-js/sha256';
 import { generateSlug } from 'random-word-slugs';
-import { LS_PASSLENGTH, LS_PASSPHRASE } from './constants'
 
 const passphraseStorage = browser.storage.sync.get('passphrase')
 const passLengthStorage = browser.storage.sync.get('passLength')

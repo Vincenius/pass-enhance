@@ -1,10 +1,10 @@
 # Pass Enhance
 
-TODO README
+Work in progress
 
-- development within /app
 
-- todo scripts to copy files also to firefox & chrome dirs
+Signup at [hpass-enhance.com](https://pass-enhance.com/) to get notified once it's ready.
+
 
 
 ## License
