@@ -3,7 +3,7 @@
 Work in progress
 
 
-Signup at [hpass-enhance.com](https://pass-enhance.com/) to get notified once it's ready.
+Signup at [pass-enhance.com](https://pass-enhance.com/) to get notified once it's ready.
 
 
 
