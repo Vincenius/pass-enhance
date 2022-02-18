@@ -5,6 +5,8 @@ const passphraseInput = document.querySelector('#passphrase')
 const passlengthInput = document.querySelector('#passlength')
 const passlengthRangeInput = document.querySelector('#passlength-range')
 const infoIcons = document.querySelectorAll('.info-icon')
+const showPassphrase = document.querySelector('.show-passphrase')
+const hidePassphrase = document.querySelector('.hide-passphrase')
 
 const passphraseStorage = browser.storage.sync.get('passphrase')
 const passLengthStorage = browser.storage.sync.get('passLength')
@@ -66,3 +68,15 @@ for (let icon of infoIcons) {
     icon.parentNode.querySelector('.info-popup').classList.remove('visible')
   })
 }
+
+showPassphrase.addEventListener('click', () => {
+  passphraseInput.setAttribute('type', 'text')
+  showPassphrase.classList.add('hidden')
+  hidePassphrase.classList.remove('hidden')
+})
+
+hidePassphrase.addEventListener('click', () => {
+  passphraseInput.setAttribute('type', 'password')
+  showPassphrase.classList.remove('hidden')
+  hidePassphrase.classList.add('hidden')
+})
