@@ -1,4 +1,4 @@
-import { generateSlug } from 'random-word-slugs';
+import 'crypto-js'; // improves native Math.random(), which affects random-word-slugs
 import { LS_PASSLENGTH, LS_PASSPHRASE } from './constants'
 
 const passphraseInput = document.querySelector('#passphrase')

@@ -1,3 +1,4 @@
+import 'crypto-js'; // improves native Math.random(), which affects random-word-slugs
 import sha256 from 'crypto-js/sha256';
 import { generateSlug } from 'random-word-slugs';
 
