@@ -45,7 +45,9 @@ const shuffle = (a, ciphertext) => {
   return a;
 }
 
-const encryptInput = input => {
+const encryptInput = e => {
+  const input = e.target.parentNode.previousSibling
+
   const ciphertext = sha256(`${input.value}_${passphrase}_${url}`).toString()
   let passwordArray = []
   let password = ''
@@ -75,39 +77,28 @@ const encryptInput = input => {
   input.value = password
 }
 
-const mouseIsOnIcon = e => {
-  const positionInfo = e.target.getBoundingClientRect();
-  const mouseX = e.pageX - e.target.offsetLeft;
-  const mouseY = e.pageY - e.target.offsetTop;
-
-  const iconTop = (positionInfo.height / 2) - 10;
-  const iconBottom = (positionInfo.height / 2) + 10;
-  const iconLeft = (positionInfo.width * 0.95) - 12;
-  const iconRight = (positionInfo.width * 0.95) + 4;
-
-  return (mouseX >= iconLeft &&
-    mouseX <= iconRight &&
-    mouseY >= iconTop &&
-    mouseY <= iconBottom)
+const calcIconPosition = (icon, input) => {
+  const style = input.currentStyle || window.getComputedStyle(input);
+  const top = `calc(-${input.offsetHeight}px - ${style.marginBottom})`
+  const left = `calc(${input.offsetWidth}px + ${style.marginLeft})`
+  icon.style.top = top;
+  icon.style.left = left;
 }
 
-const trackInputMousePos = e => {
-  if (mouseIsOnIcon(e)) {
-    e.target.classList.add('pass-enhance-hover');
-  } else {
-    e.target.classList.remove('pass-enhance-hover');
-  }
-}
-
-const onInputMouseClick = e => {
-  if (mouseIsOnIcon(e)) {
-    e.preventDefault()
-    encryptInput(e.target)
-  }
-}
-
+// TODO rerender on resize
 for (let i of inputs) {
-  i.classList.add('pass-enhance');
-  i.addEventListener('mousemove', trackInputMousePos)
-  i.addEventListener('click', onInputMouseClick)
+  const container = document.createElement('div');
+  container.classList.add('pass-enhance-container');
+
+  const icon = document.createElement('div')
+  icon.classList.add('pass-enhance')
+
+  calcIconPosition(icon, i)
+  window.onresize = function(event) {
+    calcIconPosition(icon, i)
+  }
+
+  icon.addEventListener('click', encryptInput)
+  container.appendChild(icon)
+  i.after(container)
 }
