@@ -15,6 +15,8 @@ This will watch the `/app` folder. It includes an `index.html` to test the plugi
 
 The `/app/src` includes the JavaScript and CSS files for the add on popup (`popup.css`, `popup.js`) and the code which will be injected into the browser (`pass-enhance.css`, `pass-enhance.js`).
 
+The watch scipt will also copy the compiled files into the `/firefox` folder.
+
 
 [pass-enhance.com](https://pass-enhance.com/)
 
