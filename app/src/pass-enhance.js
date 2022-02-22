@@ -7,7 +7,7 @@ const passLengthStorage = browser.storage.sync.get('passLength')
 let passphrase
 let passLength
 
-// TODO move get as promise to some utils.js ??
+// Get or create passphrase
 passphraseStorage.then((res) => {
   if (res && res.passphrase) {
     passphrase = res.passphrase
@@ -18,6 +18,7 @@ passphraseStorage.then((res) => {
   }
 });
 
+// Get or create passlength
 passLengthStorage.then((res) => {
   if (res && res.passLength) {
     passLength = parseInt(res.passLength)
@@ -29,6 +30,7 @@ passLengthStorage.then((res) => {
   }
 });
 
+// Password encryption logic
 const SPECIAL_CHARS = ['!', '@', '#', '$', '%' ,'&' , '*']
 const CHARS = 'abcdefghijklmnopqrstuvwxyz'
 
@@ -78,6 +80,7 @@ const encryptInput = e => {
   input.value = password
 }
 
+// Add icon and handler
 const calcIconPosition = (icon, input) => {
   const style = input.currentStyle || window.getComputedStyle(input);
   const top = `calc(-${input.offsetHeight}px - ${style.marginBottom})`
@@ -86,7 +89,6 @@ const calcIconPosition = (icon, input) => {
   icon.style.left = left;
 }
 
-// TODO rerender on resize
 for (let i of inputs) {
   const container = document.createElement('div');
   container.classList.add('pass-enhance-container');

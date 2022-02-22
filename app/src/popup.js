@@ -1,5 +1,5 @@
 import 'crypto-js'; // improves native Math.random(), which affects random-word-slugs
-import { LS_PASSLENGTH, LS_PASSPHRASE } from './constants'
+import { generateSlug } from 'random-word-slugs';
 
 const passphraseInput = document.querySelector('#passphrase')
 const passlengthInput = document.querySelector('#passlength')
@@ -8,9 +8,7 @@ const infoIcons = document.querySelectorAll('.info-icon')
 const showPassphrase = document.querySelector('.show-passphrase')
 const hidePassphrase = document.querySelector('.hide-passphrase')
 
-const passphraseStorage = browser.storage.sync.get('passphrase')
-const passLengthStorage = browser.storage.sync.get('passLength')
-
+// Get or create passphrase
 passphraseStorage.then((res) => {
   if (res && res.passphrase) {
     passphraseInput.value = res.passphrase
@@ -23,6 +21,7 @@ passphraseStorage.then((res) => {
   }
 });
 
+// Get or create passlength
 passLengthStorage.then((res) => {
   if (res && res.passLength) {
     passlengthInput.value = res.passLength
@@ -37,6 +36,7 @@ passLengthStorage.then((res) => {
   }
 });
 
+// input handler
 passphraseInput.addEventListener('input', e => {
   browser.storage.sync.set({ passphrase: e.target.value })
 })
@@ -60,6 +60,7 @@ passlengthInput.addEventListener('change', e => {
   browser.storage.sync.set({ passLength: e.target.value })
 })
 
+// show password handler
 for (let icon of infoIcons) {
   icon.addEventListener('mouseenter', () => {
     icon.parentNode.querySelector('.info-popup').classList.add('visible')
