@@ -5,6 +5,12 @@ This browser plugin adds a small icon to every password field.
 It encrypts what you enter, based on a passphrase and the domain you're on. So you have to memorize only one password and still have a different one stored on every website you visit.
 
 
+## Get it
+
+[Firefox](https://addons.mozilla.org/en-US/firefox/addon/pass-enhance/)
+
+Chrome (In work)
+
 ## Dev Setup
 
 - run `npm i` to install dependencies
