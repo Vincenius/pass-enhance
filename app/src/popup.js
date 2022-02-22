@@ -9,6 +9,9 @@ const showPassphrase = document.querySelector('.show-passphrase')
 const hidePassphrase = document.querySelector('.hide-passphrase')
 
 // Get or create passphrase
+const passphraseStorage = browser.storage.sync.get('passphrase')
+const passLengthStorage = browser.storage.sync.get('passLength')
+
 passphraseStorage.then((res) => {
   if (res && res.passphrase) {
     passphraseInput.value = res.passphrase
