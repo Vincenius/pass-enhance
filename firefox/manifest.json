@@ -27,8 +27,7 @@
   ],
   "browser_specific_settings": {
     "gecko": {
-      "id": "vincentwill@arcor.de",
-      "strict_min_version": "42.0"
+      "id": "vincentwill@arcor.de"
     }
   }
 }
